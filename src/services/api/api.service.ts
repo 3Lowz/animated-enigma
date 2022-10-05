@@ -1,5 +1,5 @@
 
-class API {
+class APIService {
   static index() {
     return { hello: 'world' }
   }
