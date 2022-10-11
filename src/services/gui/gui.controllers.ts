@@ -1,14 +1,14 @@
-import BaseService from './base.service';
+import GUIService from './gui.service';
 
 /**
  * Controller class
  * Should handle query params, validation, and response
  * Should not implement service logic
  */
-class BaseController {
+class GUIController {
 
     static index (req, reply) {
-        const message = BaseService.index()
+        const message = GUIService.index()
         reply.send(message)
     }
 
@@ -18,4 +18,4 @@ class BaseController {
 
 };
 
-export default BaseController
+export default GUIController

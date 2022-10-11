@@ -32,7 +32,10 @@ Fastify Plugin
 
  - `git add subm....`
 
-TODO:
+### TODO:
+
+ - [ ] : add css loader && uncomment `bootstrap.css` in `src/services/gui/app/index.tsx`
+ - [ ] : review and fix dependencies + npm commands
 
 ## Roadmap
 If you have ideas for releases in the future, it is a good idea to list them in the README.

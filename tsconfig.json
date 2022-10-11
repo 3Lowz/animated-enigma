@@ -5,6 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es6",
     "allowJs": true,
+    "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "rootDir": ".",
@@ -17,6 +18,5 @@
       "*": ["node_modules/*"]
     },
     "noImplicitAny": false,
-    "lib": ["es6"]
   }
 }

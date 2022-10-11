@@ -1,7 +1,7 @@
 /**
  * Class service
  */
-class BaseService {
+class GUIService {
     static index () {
         return { message: 'Base service' }
     }
@@ -11,4 +11,4 @@ class BaseService {
     }
 }
 
-export default BaseService
+export default GUIService
