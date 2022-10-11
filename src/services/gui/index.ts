@@ -1,14 +1,18 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
-import BaseController from './base.controllers' ;
+import GUIService from './gui.controllers' ;
 
-const baseRoutes = [
+interface FastifyReplyDep extends FastifyReply {
+  sendFile: Function
+}
+
+const guiRoutes = [
   {
     method: 'GET',
     url: '/base',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
       reply.send(
-        BaseController.index(req, reply)
+        GUIService.index(req, reply)
       )
     }
   },
@@ -20,7 +24,14 @@ const baseRoutes = [
       const result = { version: '1.0.0' }
       reply.send(result)
     }
+  },
+  {
+    method: 'GET',
+    url: '/webapp',
+    handler: (req: FastifyRequest, reply: FastifyReplyDep) => {
+      reply.sendFile('/components/webapp')
+    }
   }
 ]
 
-export default baseRoutes
+export default guiRoutes

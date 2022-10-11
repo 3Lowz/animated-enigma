@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import baseRoutes from './services/base/index';
+import guiRoutes from './services/gui/index';
 
 const pluginRoutes = [
   {
@@ -28,7 +28,7 @@ const pluginRoutes = [
  * @returns Fastify instance
  */
 export default function registerRoutes(fastify: FastifyInstance) {
-    const routes = Array().concat(pluginRoutes, baseRoutes)
+    const routes = Array().concat(pluginRoutes, guiRoutes)
     routes.map((route) => fastify.route(route))
     return fastify
   }
