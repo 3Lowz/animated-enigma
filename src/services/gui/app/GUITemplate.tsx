@@ -1,16 +1,13 @@
-// host/src/App.js
 import React, {useState, useEffect, Suspense} from "react"
 import {
   createBrowserRouter,
   RouterProvider,
-  useNavigate,
 } from "react-router-dom"
-import {Alert, Container} from 'reactstrap'
-// import Loader from "./Components/Loader";
-import Index from './components/Index'
+import { Alert, Container } from 'reactstrap'
+import IndexPage from './components/IndexPage'
 import Subroute from './components/Subroute'
 
-function App() {
+function GUITemplate() {
   // const [routes, setRoutes] = useState([]);
   const [router, setRouter] = useState([])
   
@@ -19,7 +16,7 @@ function App() {
   const routesArr = [
     {
       // pathElement: "index",
-      element: <Index />,
+      element: <IndexPage />,
       pathRouter: '/',
       name:'index'
     },
@@ -43,6 +40,7 @@ function App() {
       }
     });
     const newRouter = createBrowserRouter(newBrowserRouter);
+    // @ts-ignore
     setRouter(newRouter)
   }
 
@@ -61,6 +59,7 @@ function App() {
           Object.keys(router).length > 0 &&
           <Suspense fallback={<div className="loading" />}>
             <RouterProvider
+              // @ts-ignore
               router={router}
             >
             </RouterProvider>
@@ -72,4 +71,4 @@ function App() {
   </>
 }
 
-export default App;
+export default GUITemplate

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const Subroute = () => {
   return (
     <div>Subroute</div>
-  );
-};  
+  )
+}
 
-export default Subroute;
+export default Subroute

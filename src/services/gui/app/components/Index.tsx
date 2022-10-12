@@ -1,9 +1,7 @@
-import React from 'react'
+import IndexPage from "./IndexPage"
+import Subroute from "./Subroute" 
 
-const Index = () => {
-  return (<>
-    Index
-  </>)
+export {
+  IndexPage,
+  Subroute
 }
-
-export default Index

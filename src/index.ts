@@ -1,7 +1,8 @@
+import { FastifyInstance, FastifyPluginOptions } from "fastify"
 import fp from "fastify-plugin"
 import registerRoutes from './routes'
 
-async function pluginName(fastify, opts) {
+async function pluginName(fastify: FastifyInstance, opts: FastifyPluginOptions): Promise<any> {
     // Registering routes
     registerRoutes(fastify)
 }
