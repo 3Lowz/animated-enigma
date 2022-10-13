@@ -1,8 +1,0 @@
-{
-  "watch": ["dist"],
-  "ext": "js",
-  "execMap": {
-    "ts": "ts-node"
-  }
-}
-  

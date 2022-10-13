@@ -4,7 +4,7 @@ import guiRoutes from './services/gui/index';
 const pluginRoutes = [
   {
     method: 'GET',
-    url: '/',
+    url: '/reactplugin',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
       const result = { message: 'hello from @alea/plugin-base-template' }

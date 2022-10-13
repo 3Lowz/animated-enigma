@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import GUIService from './gui.controllers' ;
 
-interface FastifyReplyDep extends FastifyReply {
-  sendFile: Function
+interface FastifyReplyDep extends Omit<FastifyReply, 'sendFile'> {
+  sendFile: any
 }
 
 const guiRoutes = [
@@ -27,7 +27,7 @@ const guiRoutes = [
   },
   {
     method: 'GET',
-    url: '/webapp',
+    url: '/xxx',
     handler: (req: FastifyRequest, reply: FastifyReplyDep) => {
       reply.sendFile('/components/webapp')
     }

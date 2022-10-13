@@ -1,5 +1,6 @@
 // remote/webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require("path");
 const fs = require("fs");
 const { dependencies } = require("./package.json");
@@ -57,7 +58,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-    })
+    }),
+    // new TsconfigPathPlugin({ baseUrl: './' })
   ],
   target: "web",
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Subroute = () => {
+const Subroute: React.FC = () => {
   return (
     <div>Subroute</div>
   );
