@@ -22,17 +22,21 @@ const baseRoutes: Array<RouteObject> = [
   {
    path: '/',
    element: <Page />,
+   loader: async () => { message: 'test loader' },  // Can't remember when I saw it and what is used for
    children: [
     {
       path: '/main', 
+      loader: async () => { message: 'test loader' },
       element: <Main />,
     },
     {
       path: '/subroute',
+      loader: async () => { message: 'test loader' },
       element:  <Subroute />,
     },
     {
       path: '*',
+      loader: async () => { message: 'test loader' },
       element: <NotFound />
     }
    ] 

@@ -1,9 +1,10 @@
 import React from 'react'
+import { ReactElement } from 'react';
 
-const Main: React.FC = () => {
-  return (<>
-    Main
-  </>)
-}
+const Subroute: React.FC = () => {
+  return (
+    <div>Subroute</div>
+  );
+};  
 
-export default Main
+export default Subroute

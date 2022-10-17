@@ -57,48 +57,46 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
     // new TsconfigPathPlugin({ baseUrl: './' })
     new ModuleFederationPlugin({
       name: 'Skeleton',
-      filename: 'skeleton.js',
+      filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/services/gui/app/App'
+        './App': './src/services/gui/app/App',
+        './boot': './src/services/gui/app/bootstrap',
+        './Subroute': './src/services/gui/app/components/Subroute',
+        './Main': './src/services/gui/app/components/Main',
       },
       shared: {
-        react: {
-          eager: true,
-          singleton: true,
-          requiredVersion: dependencies.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: dependencies["react-dom"],
-        },
-        "react-router": {
-          singleton: true,
-          requiredVersion: dependencies["react-router"],
-        },
+      //   react: {
+      //     eager: true,
+      //     singleton: true,
+      //     requiredVersion: dependencies.react,
+      //   },
+      //   "react-dom": {
+      //     singleton: true,
+      //     requiredVersion: dependencies["react-dom"],
+      //   },
+      //   "react-router": {
+      //     singleton: true,
+      //     requiredVersion: dependencies["react-router"],
+      //   },
         "react-router-dom": {
           singleton: true,
           requiredVersion: dependencies["react-router-dom"],
         },
-        "react-router-config": {
-          singleton: true,
-          requiredVersion: dependencies["react-router-config"],
-        },
-        "reactstrap": {
-          eager: true,
-          singleton: true,
-          requiredVersion: dependencies.reactstrap,
-        },
-        "module-federation-import-remote": {
-          eager: true,
-          requiredVersion: dependencies['module-federation-import-remote']
-        }
+      //   "react-router-config": {
+      //     singleton: true,
+      //     requiredVersion: dependencies["react-router-config"],
+      //   },
+      //   "reactstrap": {
+      //     singleton: true,
+      //     requiredVersion: dependencies.reactstrap,
+      //   }
       },
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
     })
   ],
   target: "web",

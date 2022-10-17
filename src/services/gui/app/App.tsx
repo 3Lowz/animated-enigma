@@ -1,7 +1,9 @@
 import React, { Suspense }  from "react"
 import {
+  createMemoryRouter,
   createBrowserRouter,
-  RouterProvider
+  RouterProvider,
+  MemoryRouter
 } from "react-router-dom"
 import { Alert, Container } from 'reactstrap'
 
@@ -9,7 +11,7 @@ import Routes from './Routes'
 
 const App = () => {
 
-  const routes = createBrowserRouter(Routes)
+  const routes = createMemoryRouter(Routes)
 
   return (<>
     <div className="ht_wrapper_page">
