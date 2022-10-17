@@ -1,9 +1,10 @@
 // remote/webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TsconfigPathPlugin = require('tsconfig-paths-webpack-plugin');
+const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 const fs = require("fs");
 const { dependencies } = require("./package.json");
+const { Module } = require('module');
 
 // const federations = {};
 // // Resolves deps
@@ -31,7 +32,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "public"),
     },
-    port: 4000,
+    port: 4004,
   },
   module: {
     rules: [
@@ -60,6 +61,45 @@ module.exports = {
       template: "./public/index.html",
     }),
     // new TsconfigPathPlugin({ baseUrl: './' })
+    new ModuleFederationPlugin({
+      name: 'Skeleton',
+      filename: 'skeleton.js',
+      exposes: {
+        './App': './src/services/gui/app/App'
+      },
+      shared: {
+        react: {
+          eager: true,
+          singleton: true,
+          requiredVersion: dependencies.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: dependencies["react-dom"],
+        },
+        "react-router": {
+          singleton: true,
+          requiredVersion: dependencies["react-router"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: dependencies["react-router-dom"],
+        },
+        "react-router-config": {
+          singleton: true,
+          requiredVersion: dependencies["react-router-config"],
+        },
+        "reactstrap": {
+          eager: true,
+          singleton: true,
+          requiredVersion: dependencies.reactstrap,
+        },
+        "module-federation-import-remote": {
+          eager: true,
+          requiredVersion: dependencies['module-federation-import-remote']
+        }
+      },
+    })
   ],
   target: "web",
 };

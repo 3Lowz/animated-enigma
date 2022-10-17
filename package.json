@@ -5,8 +5,8 @@
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "watch": "tsc --watch --preserveWatchOutput --pretty",
-    "webpack:build": "webpack-cli -c webpack.config.js",
-    "webpack:dev": "webpack-dev-server",
+    "build:webpack": "webpack-cli -c webpack.config.js",
+    "dev:webpack": "webpack-dev-server",
     "test": "npx jest"
   },
   "keywords": [
@@ -23,6 +23,7 @@
   "dependencies": {
     "fastify-plugin": "^4.2.1",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router": "^6.4.2",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.4.2",

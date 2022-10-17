@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Subroute: React.FC = () => {
   return (
@@ -6,4 +6,4 @@ const Subroute: React.FC = () => {
   );
 };  
 
-export default Subroute;
+export default Subroute

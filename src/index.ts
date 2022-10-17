@@ -4,12 +4,6 @@ import registerRoutes from './routes'
 async function pluginSkeleton(fastify, opts) {
     // Registering routes
     registerRoutes(fastify)
-
-    console.log(`fastify gui prop:`)
-    console.log(fastify.gui)
-
-    fastify.gui['plugin-skeleton'] = {}
-    
 }
 
 export default fp(pluginSkeleton, {
@@ -17,3 +11,17 @@ export default fp(pluginSkeleton, {
     name: '@alea/plugin-skeleton',
     dependencies: ['@fastify/static']
 })
+
+
+
+/**
+ * Webpack Federation object
+ *      {
+            name: 'MD1',
+            filename: 'module1.js',
+            exposes: {
+                './Index': './src/Components/Module1Index.js'
+            },
+            shared: ["react", "react-dom","react-router-dom", "reactstrap"]
+        }
+ */
