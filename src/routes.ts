@@ -1,10 +1,10 @@
-import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
+import { FastifyInstance, FastifyRequest, FastifyReply, FastifyServerOptions } from 'fastify';
 import baseRoutes from './services/base/index';
 
 const pluginRoutes = [
   {
     method: 'GET',
-    url: '/',
+    url: '/plugin',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
       const result = { message: 'hello from @alea/plugin-base-template' }
@@ -27,8 +27,14 @@ const pluginRoutes = [
  * @param fastify Fastify main instance
  * @returns Fastify instance
  */
-export default function registerRoutes(fastify: FastifyInstance) {
+export default function registerRoutes(fastify: FastifyInstance, opts: any) {
     const routes = Array().concat(pluginRoutes, baseRoutes)
-    routes.map((route) => fastify.route(route))
+    const { prefix } = opts || ''
+    routes.map((route) => {
+     fastify.register(async (app, _, done) => {
+      app.route(route)
+      done()
+     }, { prefix })
+    })
     return fastify
   }

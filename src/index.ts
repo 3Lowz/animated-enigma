@@ -1,12 +1,14 @@
+import { FastifyInstance, FastifyServerOptions } from "fastify";
 import fp from "fastify-plugin";
 import registerRoutes from './routes';
 
-async function pluginName(fastify, opts) {
+async function pluginName(fastify: FastifyInstance, opts: FastifyServerOptions) {
     // Registering routes
-    registerRoutes(fastify)
+    registerRoutes(fastify, opts)
 }
 
 export default fp(pluginName, {
     fastify: '4.x',
-    name: '@alea/plugin-base-template'
+    name: '@alea/test',
+    dependencies: [],
 })
