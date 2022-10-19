@@ -42,8 +42,8 @@ If you have ideas for releases in the future, it is a good idea to list them in 
 
 ### TODO:
 
- - [ ] : add css loader && uncomment `bootstrap.css` in `src/services/gui/app/index.tsx`
+ - [ ] : add css (node-sass) loader && uncomment `bootstrap.css` in `src/services/gui/app/index.tsx`
  - [ ] : review and fix dependencies + npm commands
- - [ ] : Implement basic skeleton base app
+ - [x] : Implement basic skeleton base app
 
 ## Roadmap
