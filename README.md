@@ -3,13 +3,13 @@
 Fastify basic template for plugin development
 
 ## Name
-Fastify Plugin Template
+Fastify Plugin Base Template
 
 ## Description
 Starter kit for the development of a fastify plugin from scratch
 
 ## Installation
- - 1 clone this repo
+  1. clone this repo
  - 2
 
     `git remote remove origin`
@@ -36,6 +36,8 @@ Fastify Plugin
 
  - [ ] : add css loader && uncomment `bootstrap.css` in `src/services/gui/app/index.tsx`
  - [ ] : review and fix dependencies + npm commands
+
+ - [ ] : configure webpack
 
 ## Roadmap
 If you have ideas for releases in the future, it is a good idea to list them in the README.

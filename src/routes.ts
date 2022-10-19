@@ -4,7 +4,7 @@ import guiRoutes from './services/gui/index';
 const pluginRoutes = [
   {
     method: 'GET',
-    url: '/reactplugin',
+    url: '/plugin',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
       const result = { message: 'hello from @alea/plugin-base-template' }
@@ -27,8 +27,14 @@ const pluginRoutes = [
  * @param fastify Fastify main instance
  * @returns Fastify instance
  */
-export default function registerRoutes(fastify: FastifyInstance) {
+export default function registerRoutes(fastify: FastifyInstance, opts: any) {
     const routes = Array().concat(pluginRoutes, guiRoutes)
-    routes.map((route) => fastify.route(route))
+    const { prefix } = opts || ''
+    routes.map((route) => {
+     fastify.register(async (app, _, done) => {
+      app.route(route)
+      done()
+     }, { prefix })
+    })
     return fastify
   }

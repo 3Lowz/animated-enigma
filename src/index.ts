@@ -1,27 +1,14 @@
-import fp from "fastify-plugin"
-import registerRoutes from './routes'
+import { FastifyInstance, FastifyServerOptions } from "fastify";
+import fp from "fastify-plugin";
+import registerRoutes from './routes';
 
-async function pluginSkeleton(fastify, opts) {
+async function pluginName(fastify: FastifyInstance, opts: FastifyServerOptions) {
     // Registering routes
-    registerRoutes(fastify)
+    registerRoutes(fastify, opts)
 }
 
-export default fp(pluginSkeleton, {
+export default fp(pluginName, {
     fastify: '4.x',
     name: '@alea/plugin-skeleton',
     dependencies: ['@fastify/static']
 })
-
-
-
-/**
- * Webpack Federation object
- *      {
-            name: 'MD1',
-            filename: 'module1.js',
-            exposes: {
-                './Index': './src/Components/Module1Index.js'
-            },
-            shared: ["react", "react-dom","react-router-dom", "reactstrap"]
-        }
- */
