@@ -19,6 +19,9 @@ const { Module } = require('module');
 // console.log(federations);
 
 module.exports = {
+  target: "web",
+  mode: "development",
+  devtool: "eval",
   entry: {
     server: "./src/index.ts",
     app: "./src/services/gui/app/index.tsx"
@@ -27,12 +30,12 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "[name].js"
   },
-  mode: "development",
   devServer: {
     static: {
       directory: path.join(__dirname, "public"),
     },
     port: 4004,
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -51,6 +54,12 @@ module.exports = {
           }
         ],
       },
+      {
+        test: /\.css$/i,
+        use: {
+          loader: 'css-loader'
+        }
+      },
     ],
   },
   resolve: {
@@ -63,9 +72,8 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/services/gui/app/App',
-        './boot': './src/services/gui/app/bootstrap',
         './Subroute': './src/services/gui/app/components/Subroute',
-        './Main': './src/services/gui/app/components/Main',
+        './Dashboard': './src/services/gui/app/components/dashboard'
       },
       shared: {
       //   react: {
@@ -99,5 +107,4 @@ module.exports = {
       template: "./public/index.html",
     })
   ],
-  target: "web",
 };

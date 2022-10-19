@@ -5,7 +5,6 @@ import Header from './Header'
 const Page: React.FC = () => {
   return (<>
     <Header />
-    Page
     <Outlet />
   </>)
 }
