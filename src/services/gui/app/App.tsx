@@ -4,7 +4,7 @@ import {
   BrowserRouter,
   Routes
 } from "react-router-dom"
-import { Alert, Container } from 'reactstrap'
+// import { Alert, Container } from 'reactstrap'
 
 import DashboardRoutes from './components/dashboard/Dashboard.routes'
 import AppRoutes, { mapRoutes, addBrowserRoutes } from './Routes'
@@ -21,16 +21,16 @@ const App = () => {
   return (<>
     <div className="ht_wrapper_page">
       <div className="ht_page_container">
-        <Container>
+        {/* <Container> */}
           <Suspense fallback={<div className="Loading">Loading...</div>}>
-            <Alert>Backend Plugin Template</Alert>
+            {/* <Alert>Backend Plugin Template</Alert> */}
             <BrowserRouter>
               <Routes>
                 {mapRoutes(AppRoutes)}
               </Routes>
             </BrowserRouter>
           </Suspense>
-        </Container>
+        {/* </Container> */}
       </div>
     </div>
   </>)

@@ -5,21 +5,25 @@ import {
 } from 'react-router-dom'
 
 import Dashboard from './Dashboard'
-import Header from './Header.dashboard';
-import MainDashboard from './Main.dashboard';
-import SlaveDashboard from './Slave.dashboard';
+import DashboardPage from './Dashboard.page'
+import MainDashboard from './Main.dashboard'
+import SlaveDashboard from './Slave.dashboard'
 
 const baseRoutes: Array<RouteObject> = [
   {
    path: '/dashboard',
-   element: <Dashboard />,
+   element: <DashboardPage />,
    children: [
     {
-      path: '/dashboard/main', 
+      path: 'index', 
+      element: <Dashboard />,
+    },
+    {
+      path: 'main', 
       element: <MainDashboard />,
     },
     {
-      path: '/dashboard/slave',
+      path: 'slave',
       element:  <SlaveDashboard />,
     },
     {
@@ -45,4 +49,4 @@ const mapRoutes = routes => {
 // export default createBrowserRouter(Routes);
 export default Routes as Array<RouteObject>;
 
-export { mapRoutes }
+export { mapRoutes, Routes }

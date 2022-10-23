@@ -2,9 +2,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
-const fs = require("fs");
-const { dependencies } = require("./package.json");
-const { Module } = require('module');
+const { federation } = require("./package.json");
 
 // const federations = {};
 // // Resolves deps
@@ -21,14 +19,15 @@ const { Module } = require('module');
 module.exports = {
   target: "web",
   mode: "development",
-  devtool: "eval",
+  devtool: 'source-map',
   entry: {
     server: "./src/index.ts",
     app: "./src/services/gui/app/index.tsx"
   },
   output: {
     path: __dirname + "/dist",
-    filename: "[name].js"
+    filename: "[id].js",
+    // sourceMapFilename: "[id].map",
   },
   devServer: {
     static: {
@@ -46,61 +45,67 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/typescript",
+              ],
             },
           },
-          {
-            loader: 'ts-loader'
-          }
         ],
       },
       {
         test: /\.css$/i,
-        use: {
-          loader: 'css-loader'
-        }
+        use: ['css-loader']
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   plugins: [
     // new TsconfigPathPlugin({ baseUrl: './' })
     new ModuleFederationPlugin({
       name: 'Skeleton',
+      // library: { type: "var", name: "skeleton" }
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/services/gui/app/App',
+        // './App': './src/services/gui/app/App',
+        // './bootstrap': './src/services/gui/app/bootstrap',
+        './Page': './src/services/gui/app/components/dashboard/Dashboard.page',
         './Subroute': './src/services/gui/app/components/Subroute',
-        './Dashboard': './src/services/gui/app/components/dashboard'
+        './Routes': './src/services/gui/app/components/dashboard/index'
       },
       shared: {
-      //   react: {
-      //     eager: true,
-      //     singleton: true,
-      //     requiredVersion: dependencies.react,
-      //   },
-      //   "react-dom": {
-      //     singleton: true,
-      //     requiredVersion: dependencies["react-dom"],
-      //   },
-      //   "react-router": {
-      //     singleton: true,
-      //     requiredVersion: dependencies["react-router"],
-      //   },
+        // ...federation,
+        "react": {
+          singleton: true,
+          // eager: true,
+          requiredVersion: federation.react,
+        },
+        "react-dom": {
+          singleton: true,
+          // eager: true,
+          requiredVersion: federation['react-dom'],
+        },
+        // "react-router": {
+        //   singleton: true,
+        //   eager: true,
+        //   // requiredVersion: federation['react-router'],
+        // },
         "react-router-dom": {
           singleton: true,
-          requiredVersion: dependencies["react-router-dom"],
+          // eager: true,
+          requiredVersion: federation['react-router-dom'],
         },
-      //   "react-router-config": {
-      //     singleton: true,
-      //     requiredVersion: dependencies["react-router-config"],
-      //   },
-      //   "reactstrap": {
-      //     singleton: true,
-      //     requiredVersion: dependencies.reactstrap,
-      //   }
+        // "reactstrap": {
+        //   singleton: true,
+        //   eager: true,
+        //   // requiredVersion: federation.reactstrap,
+        // },
+        // "module-federation-import-remote": {
+        //   requiredVersion: dependencies['module-federation-import-remote']
+        // }
       },
     }),
     new HtmlWebpackPlugin({
