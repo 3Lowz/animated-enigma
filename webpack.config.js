@@ -19,19 +19,19 @@ const { federation } = require("./package.json");
 module.exports = {
   target: "web",
   mode: "development",
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   entry: {
-    server: "./src/index.ts",
+    // server: "./src/index.ts",
     app: "./src/services/gui/app/index.tsx"
   },
   output: {
     path: __dirname + "/dist",
-    filename: "[id].js",
-    // sourceMapFilename: "[id].map",
+    filename: "[name].js",
+    sourceMapFilename: "[name].map",
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, "dist"),
     },
     port: 4004,
     historyApiFallback: true
@@ -72,13 +72,13 @@ module.exports = {
       exposes: {
         // './App': './src/services/gui/app/App',
         // './bootstrap': './src/services/gui/app/bootstrap',
-        './Page': './src/services/gui/app/components/dashboard/Dashboard.page',
+        './Page': './src/services/gui/app/components/dashboard/Page.dashboard',
         './Subroute': './src/services/gui/app/components/Subroute',
         './Routes': './src/services/gui/app/components/dashboard/index'
       },
       shared: {
         // ...federation,
-        "react": {
+        react: {
           singleton: true,
           // eager: true,
           requiredVersion: federation.react,

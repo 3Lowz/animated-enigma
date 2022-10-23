@@ -1,10 +1,12 @@
-import React from 'react'
-import { FC } from 'react'
-
+import React, { FC } from 'react'
+import { Alert, Container } from 'reactstrap'
 
 const Dashboard: FC = () => {
   return (<>
-    Index dashboard page
+    <Container>
+      <Alert>Index</Alert>
+      <h1>Index dashboard page</h1>
+    </Container>
   </>)
 }
 

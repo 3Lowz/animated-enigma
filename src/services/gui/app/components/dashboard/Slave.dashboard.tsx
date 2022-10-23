@@ -1,8 +1,12 @@
 import React, { FC } from 'react'
+import { Alert, Container } from 'reactstrap'
 
 const SlaveDashboard: FC = () => {
   return (<>
-    Slave dashboard page
+    <Container>
+      <Alert>Slave</Alert>
+      <h1>Slave dashboard page</h1>
+    </Container>
   </>)
 }
 

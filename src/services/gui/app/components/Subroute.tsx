@@ -6,6 +6,7 @@ const Subroute: React.FC = () => {
     <div>
       <Container>
         <Alert>Subroute</Alert>
+        <h1>Plugin Subroute page</h1>
       </Container>
     </div>
   );

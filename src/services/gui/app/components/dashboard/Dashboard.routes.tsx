@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 import Dashboard from './Dashboard'
-import DashboardPage from './Dashboard.page'
+import DashboardPage from './Page.dashboard'
 import MainDashboard from './Main.dashboard'
 import SlaveDashboard from './Slave.dashboard'
 
