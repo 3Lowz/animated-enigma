@@ -15,7 +15,6 @@ Plugin template for plugin development with react app or component exposed using
     ```
     and
     ```
-    git remote add origin <new-git-remote-url>
     ```
 
     or (in 1 command)
@@ -39,6 +38,33 @@ If you have ideas for releases in the future, it is a good idea to list them in 
  - Navigate to the project that is used to test the plugin
  - `npm link <plugin-name>`
  - Done!
+
+
+## App Scaffolding:
+```
+├── App.css    //
+├── App.tsx    // Entry point for App
+├── bootstrap.tsx    // bootstrap entry for federation
+├── index.tsx        // index.tsx
+├── Routes.tsx       // Routes entry point for App
+└── components       // App components
+    ├── dashboard    // Isoletad Funcionality Component Page
+    │   ├── Dashboard.routes.tsx    // Component Page Routes
+    │   ├── Dashboard.service.tsx   // TODO: Component Page Service
+    │   ├── Dashboard.tsx           // Main Component
+    │   ├── Header.dashboard.tsx    // Header for component
+    │   ├── index.tsx               // exporting default Routes
+    │   ├── Main.dashboard.tsx      // Subcomponent
+    │   ├── Page.dashboard.tsx      // Page component
+    │   ├── SideMenu.dashboard.tsx  // Subcomponent
+    │   └── Slave.dashboard.tsx     // Subcomponent
+    ├── Header.tsx      // Internal developing header
+    ├── NotFound.tsx    // Internal developing notFound page
+    ├── Page.tsx        // Internal developing Outlet renderer
+    └── Subroute.tsx    // Internal developing test component
+
+```
+
 
 ### TODO:
 

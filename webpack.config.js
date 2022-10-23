@@ -21,10 +21,26 @@ module.exports = {
   mode: "development",
   devtool: 'inline-source-map',
   entry: {
-    // server: "./src/index.ts",
-    app: "./src/services/gui/app/index.tsx"
+    // server: './src/index.ts',
+    app: './src/services/gui/app/index.tsx'
+    // server: {
+    //   import: "./src/index.ts",
+    //   filename: "./[app]/[name].js",
+    //   // sourcemMapFilename: "./dist/[app]/[name].map"
+
+    // },
+    // app: {
+    //   import: "./src/services/gui/app/index.tsx",
+    //   filename: "[name].js",
+    //   // sourceMapFilename: "[name].map",
+    // },
   },
   output: {
+    // server: {
+    //   path: __dirname + '/dist',
+    //   filename: "[app]/[name].js",
+    //   sourcemMapFilename: "[app]/[name].map"
+    // },
     path: __dirname + "/dist",
     filename: "[name].js",
     sourceMapFilename: "[name].map",
