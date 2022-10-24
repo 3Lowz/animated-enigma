@@ -5,22 +5,22 @@ Plugin template for plugin development with react app or component exposed using
 
 ## Installation
  1. clone this repo
-   > git clone git@gitlab.local.alea.pro:adm-3/templates/fastify-plugin-react-template.git
+    > git clone git@gitlab.local.alea.pro:adm-3/templates/fastify-plugin-react-template.git
 
  2. Remove the remote and url and set the new one
  
-   > git remote remove origin && git remote add origin <new-git-remote-url>
+    > git remote remove origin && git remote add origin <new-git-remote-url>
 
-or (in 1 command)
+    or (in 1 command)
 
-   > git remote set-url origin <new-git-remote-url>
+    > git remote set-url origin <new-git-remote-url>
 
- 4. In the `package.json` file edit the `name`, `version` and `description` properties
+ 3. In the `package.json` file edit the `name`, `version` and `description` properties
 
- 5. In `webpack.config.js` file edit the object properties for the _ModuleFederationPlugin_
+ 4. In `webpack.config.js` file edit the object properties for the _ModuleFederationPlugin_
       (TODO: edit me after dynamic import has been implemented)
   
- 6. Develop!!
+ 5. Develop!!
 
 ## Usage
 If you have ideas for releases in the future, it is a good idea to list them in the README.
