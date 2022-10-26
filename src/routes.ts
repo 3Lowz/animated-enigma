@@ -1,5 +1,6 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import gui from './services/gui/index';
+import api from './services/api/api.routes'
 
 const moduleRoutes = [
   {
@@ -7,7 +8,7 @@ const moduleRoutes = [
     url: '/plugin',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
-      const result = { message: 'hello from @alea/plugin-base-template' }
+      const result = { message: 'hello from @alea-module/skeleton-react' }
       reply.send(result)
     }
   },
@@ -28,7 +29,7 @@ const moduleRoutes = [
  * @returns Fastify instance
  */
 export default function registerRoutes(fastify: FastifyInstance, opts: any) {
-    const routes = Array().concat(moduleRoutes, gui)
+    const routes = Array().concat(moduleRoutes, gui, api)
     const { prefix } = opts || ''
     routes.map((route) => {
      fastify.register(async (app, _, done) => {

@@ -4,7 +4,7 @@ import APISerivce from './api.service' ;
 /**
  * 
  */
-const baseRoutes = [
+const apiRoutes = [
   {
     method: 'GET',
     url: '/api',
@@ -26,4 +26,4 @@ const baseRoutes = [
   }
 ]
 
-export default baseRoutes
+export default apiRoutes
