@@ -2,13 +2,15 @@ import { FastifyInstance, FastifyPluginOptions } from "fastify"
 import fp from "fastify-plugin"
 import registerRoutes from './routes'
 
-async function pluginName(fastify: FastifyInstance, opts: FastifyPluginOptions): Promise<any> {
+async function moduleName(fastify: FastifyInstance, opts: FastifyPluginOptions, done: any): Promise<any> {
     // Registering routes
-    registerRoutes(fastify)
+    registerRoutes(fastify, opts)
+
+    done()
 }
 
-export default fp(pluginName, {
+export default fp(moduleName, {
     fastify: '4.x',
-    name: '@alea/plugin-base-template',
+    name: '@alea-module/skeleton-react',
     dependencies: ['@fastify/static']
 })

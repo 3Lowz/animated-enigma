@@ -1,3 +1,3 @@
-import Plugin from './src/index'
+import Plugin from "./src";
 
-export { Plugin }
+export default Plugin
