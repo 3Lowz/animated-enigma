@@ -1,7 +1,8 @@
 {
-  "name": "@alea/plugin-skeleton",
+  "name": "@alea-module/skeleton-react",
   "version": "0.1.0",
-  "description": "Basic skeleton for plugin development",
+  "description": "Basic skeleton for module(fastify plugin) with independent UI development",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "watch": "tsc --watch --preserveWatchOutput --pretty",
@@ -15,10 +16,8 @@
     "plugin",
     "development"
   ],
-  "author": "Henryk Daneluz",
+  "author": "Alea developer",
   "license": "ISC",
-  "main": "./dist/server/main.js",
-  "unpkg": "./dist/umd/react-router-dom.production.min.js",
   "module": "./dist/index.js",
   "types": "./index.d.ts",
   "dependencies": {

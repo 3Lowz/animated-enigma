@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import guiRoutes from './services/gui/index';
+import gui from './services/gui/index';
 
-const pluginRoutes = [
+const moduleRoutes = [
   {
     method: 'GET',
     url: '/plugin',
@@ -28,7 +28,7 @@ const pluginRoutes = [
  * @returns Fastify instance
  */
 export default function registerRoutes(fastify: FastifyInstance, opts: any) {
-    const routes = Array().concat(pluginRoutes, guiRoutes)
+    const routes = Array().concat(moduleRoutes, gui)
     const { prefix } = opts || ''
     routes.map((route) => {
      fastify.register(async (app, _, done) => {
