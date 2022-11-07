@@ -1,5 +1,6 @@
-import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import gui from './services/gui/index';
+import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import emptyHook from './hooks/empty.hook'
+import gui from './services/gui/index'
 import api from './services/api/api.routes'
 
 const moduleRoutes = [
@@ -29,7 +30,14 @@ const moduleRoutes = [
  * @returns Fastify instance
  */
 export default function registerRoutes(fastify: FastifyInstance, opts: any) {
-    const routes = Array().concat(moduleRoutes, gui, api)
+    const routes = Array().concat(
+      moduleRoutes,
+      gui,
+      api,
+      // Add you routes here...
+    )
+    // TODO: allow method definition
+    const hookedRoutes = routes.map(route => { return { ...route, onRequest: emptyHook } })
     const { prefix } = opts || ''
     routes.map((route) => {
      fastify.register(async (app, _, done) => {
