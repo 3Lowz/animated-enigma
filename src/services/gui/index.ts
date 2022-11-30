@@ -29,7 +29,7 @@ const guiRoutes = [
   },
   {
     method: 'GET',
-    url: '/xxx',
+    url: '/webapp',
     handler: (req: FReq, reply: FastifyReplyDep) => {
       reply.sendFile('/components/webapp')
     }

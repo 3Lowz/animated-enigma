@@ -4,18 +4,6 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 const { federation } = require("./package.json");
 
-// const federations = {};
-// // Resolves deps
-// (createFederations = function() {
-//   fs.readdirSync(path.resolve(__dirname, "./src/modules/")).forEach((folder) => {
-//     fs.readdirSync(path.resolve(__dirname, `./src/modules/${folder}/src/components`)).forEach((file) => {
-//       const nameElements = file.split('.js');
-//       federations[`./adm/${folder}/${nameElements[0]}`] = `./src/modules/${folder}/src/components/${file}`;
-//     })
-//   })
-// })();
-// console.log(federations);
-
 module.exports = {
   target: "web",
   mode: "development",
