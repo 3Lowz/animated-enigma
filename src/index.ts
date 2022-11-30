@@ -12,6 +12,6 @@ async function moduleName(fastify: FastifyInstance, opts: FastifyServerOptions, 
 
 export default fp(moduleName, {
     fastify: '4.x',
-    name: '@alea-module/skeleton-react',
+    name: '@alea-module/react-template',
     dependencies: ['@fastify/static']
 })

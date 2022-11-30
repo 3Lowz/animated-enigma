@@ -1,8 +1,10 @@
 {
-  "name": "@alea-module/skeleton-react",
+  "name": "@alea-module/react-template",
   "version": "0.1.0",
-  "description": "Basic skeleton for module(fastify plugin) with independent UI development",
+  "description": "Template for module(fastify plugin) with independent UI development exported through webpack module-federation",
   "main": "dist/index.js",
+  "module": "./dist/module.js",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "watch": "tsc --watch --preserveWatchOutput --pretty",
@@ -16,10 +18,8 @@
     "plugin",
     "development"
   ],
-  "author": "Alea developer",
+  "author": "Henryk Daneluz",
   "license": "ISC",
-  "module": "./dist/index.js",
-  "types": "./index.d.ts",
   "dependencies": {
     "fastify-plugin": "^4.2.1",
     "react": "^18.2.0",
@@ -27,7 +27,8 @@
     "react-router": "^6.4.2",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.4.2",
-    "reactstrap": "^9.1.4"
+    "reactstrap": "^9.1.4",
+    "typeorm": "^0.3.10"
   },
   "federation": {
     "react": "18.2.0",
@@ -54,6 +55,8 @@
     "tsc-alias": "^1.7.0",
     "tsconfig-paths": "^4.1.0",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
   }
 }
