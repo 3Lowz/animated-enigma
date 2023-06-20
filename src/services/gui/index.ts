@@ -1,7 +1,9 @@
-import { FastifyRequest, FastifyReply } from 'fastify'
-import GUIService from './gui.controllers' ;
+import { FastifyReply as FReply } from 'fastify'
+import { FReq } from './../../../index'
+import { guiHook } from './gui.hook'
 
-interface FastifyReplyDep extends Omit<FastifyReply, 'sendFile'> {
+// Example interface extension
+interface FastifyReplyDep extends Omit<FReply, 'sendFile'> {
   sendFile: any
 }
 
@@ -10,9 +12,9 @@ const guiRoutes = [
     method: 'GET',
     url: '/base',
     schema: {},
-    handler: (req: FastifyRequest, reply: FastifyReply) => {
+    handler: (req: FReq, reply: FReply) => {
       reply.send(
-        GUIService.index(req, reply)
+        req.service.index(req, reply)
       )
     }
   },
@@ -20,18 +22,20 @@ const guiRoutes = [
     method: 'GET',
     url: '/version',
     schema: {},
-    handler: (req: FastifyRequest, reply: FastifyReply) => {
+    handler: (req: FReq, reply: FReply) => {
       const result = { version: '1.0.0' }
       reply.send(result)
     }
   },
   {
     method: 'GET',
-    url: '/xxx',
-    handler: (req: FastifyRequest, reply: FastifyReplyDep) => {
+    url: '/webapp',
+    handler: (req: FReq, reply: FastifyReplyDep) => {
       reply.sendFile('/components/webapp')
     }
   }
 ]
 
-export default guiRoutes
+const hookedRoutes = guiRoutes.map(route => { return { ...route, onRequest: guiHook} })
+
+export default hookedRoutes

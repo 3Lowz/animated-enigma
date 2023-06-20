@@ -1,4 +1,5 @@
-import GUIService from './gui.service';
+import { FastifyRequest, FastifyReply } from 'fastify'
+import GUIService from './gui.service'
 
 /**
  * Controller class
@@ -7,12 +8,12 @@ import GUIService from './gui.service';
  */
 class GUIController {
 
-    static index (req, reply) {
+    static index (req: FastifyRequest, reply: FastifyReply) {
         const message = GUIService.index()
         reply.send(message)
     }
 
-    static custom (req, reply) {
+    static custom (req: FastifyRequest, reply: FastifyReply) {
         return { message: 'Develop me' }
     }
 

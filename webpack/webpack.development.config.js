@@ -21,7 +21,7 @@ const serverConfig = {
     rules: [
       {
         test: /\.(ts)?$/,
-        exclude: /node_modules/,
+        exclude: /node_modules|app/,
         use: [
           {
             loader: "babel-loader",
@@ -36,7 +36,7 @@ const serverConfig = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: [".ts",".js"],
   },
 };
 
@@ -45,7 +45,7 @@ const clientConfig = {
   mode: "development",
   devtool: 'inline-source-map',
   entry: {
-    app: './src/services/gui/app/index.tsx'
+    app: './app/index.tsx'
   },
   output: {
     path: __dirname + "/dist",
@@ -92,12 +92,11 @@ const clientConfig = {
       // library: { type: "var", name: "skeleton" }
       filename: 'remoteEntry.js',
       exposes: {
-        './Page': './src/services/gui/app/components/dashboard/Page.dashboard',
-        './Subroute': './src/services/gui/app/components/Subroute',
-        './Routes': './src/services/gui/app/components/dashboard/index'
+        './Page': './app/components/dashboard/Page.dashboard',
+        './Subroute': './app/components/Subroute',
+        './Routes': './app/components/dashboard/index'
       },
       shared: {
-        // ...federation,
         react: {
           singleton: true,
           requiredVersion: federation.react,

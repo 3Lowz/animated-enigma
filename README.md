@@ -64,10 +64,12 @@ We need to have a development HOC layer in order to separate the plugin developm
 
 ### TODO:
 
- - [ ] : add css (node-sass) loader && uncomment `bootstrap.css` in `src/services/gui/app/index.tsx`
+ - [ ] : add css (node-sass) loader && uncomment `bootstrap.css` in `app/index.tsx`
  - [x] : review and fix dependencies + npm commands
  - [x] : Implement basic skeleton base app
  - [ ] : write proper webpack configs for development / production
  - [ ] : configure separated `tsconfig.json` for plugin and app 
+ - [ ] : considering using a separated `package.json` and `tsconfig.json` for app
+ - [ ] : fix webpack when returning array of configs
 
 ## Roadmap

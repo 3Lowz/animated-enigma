@@ -1,9 +1,8 @@
-import { FastifyInstance, FastifyServerOptions } from "fastify";
-import fp from "fastify-plugin";
-import registerRoutes from './routes';
+import { FastifyInstance, FastifyPluginOptions } from "fastify"
+import fp from "fastify-plugin"
+import registerRoutes from './routes'
 
-async function moduleName(fastify: FastifyInstance, opts: FastifyServerOptions, done: any) {
-    
+async function moduleName(fastify: FastifyInstance, opts: FastifyPluginOptions, done: any): Promise<any> {
     // Registering routes
     registerRoutes(fastify, opts)
 
@@ -12,6 +11,6 @@ async function moduleName(fastify: FastifyInstance, opts: FastifyServerOptions, 
 
 export default fp(moduleName, {
     fastify: '4.x',
-    name: '@alea-module/skeleton-react',
+    name: '@alea-module/react-template',
     dependencies: ['@fastify/static']
 })

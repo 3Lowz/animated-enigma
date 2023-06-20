@@ -17,7 +17,7 @@ const serverConfig = {
     rules: [
       {
         test: /\.(ts)?$/,
-        exclude: /node_modules/,
+        exclude: /node_modules|app/,
         use: [
           {
             loader: "ts-loader",
@@ -27,7 +27,7 @@ const serverConfig = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: [".ts",".js"],
   },
 };
 
