@@ -1,5 +1,5 @@
 {
-  "name": "@alea-module/react-template",
+  "name": "@adm-3/fastify-module-react-template",
   "version": "0.1.0",
   "description": "Template for module(fastify plugin) with independent UI development exported through webpack module-federation",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "watch": "tsc --watch --preserveWatchOutput --pretty",
-    "webpack:build:prod": "webpack-cli -c webpack/webpack.production.config.js",
+    "webpack:build:prod": "webpack-cli -c we`bpack/webpack.production.config.js",
     "webpack:build": "webpack-cli -c webpack/webpack.development.config.js",
     "webpack:dev": "webpack-dev-server -c ./webpack/webpack.development.config.js",
     "test": "npx jest"
@@ -57,6 +57,6 @@
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typescript": "^4.8.3",
     "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.15.1"
   }
 }
