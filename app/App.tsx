@@ -1,11 +1,10 @@
 import React from 'react'
 import { Suspense } from 'react'
-import { createBrowserRouter, BrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Alert, Container } from 'reactstrap'
 
-import DashboardRoutes from './components/dashboard/Dashboard.routes'
-
-import AppRoutes, { mapRoutes, addBrowserRoutes } from './Routes'
+import AppRoutes from './Routes'
+// TODO: move to ./Routes
 import BaseRoutes from './components/page-base/index'
 
 import './App.css'
@@ -22,7 +21,6 @@ const App = () => {
         <div className="ht_page_container">
           <Container>
             <Suspense fallback={<div className="Loading">Loading...</div>}>
-              <Alert>Backend Plugin Template</Alert>
               <RouterProvider router={routes} />
             </Suspense>
           </Container>

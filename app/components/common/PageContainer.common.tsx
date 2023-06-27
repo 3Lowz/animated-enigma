@@ -5,7 +5,7 @@ import { Container } from 'reactstrap'
 const PageContainer = ({ children }: PageContainerPropeties) => {
   return (
     <React.Fragment>
-      <Container fluid>{children}</Container>
+      <Container>{children}</Container>
     </React.Fragment>
   )
 }

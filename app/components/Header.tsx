@@ -18,9 +18,7 @@ const Header: React.FC = () => {
             </NavItem>
             {routes.map((path, i) => (
               <NavItem className="fixme" key={i}>
-                <Button>
-                  <Link to={'/' + path}>{path}</Link>
-                </Button>
+                <Link to={'/' + path}>{path}</Link>
               </NavItem>
             ))}
           </Nav>
