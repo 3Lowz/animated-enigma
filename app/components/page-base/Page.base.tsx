@@ -1,15 +1,14 @@
-import { Col, Row } from 'reactstrap'
+import { Container, Col, Row } from 'reactstrap'
 // import PageContainer from '../../Components/Common/PageContainer'
-import Breadcrumb from '../common/Breadcrumb.common'
-import PageContainer from '../common/PageContainer.common'
 import { Outlet } from 'react-router'
+import React, { FC } from 'react'
 
-import React from 'react'
+import Breadcrumb from '../common/Breadcrumb.common'
 import PageHeader from './Page.header'
 
 // export default PageContainer
 
-const BasePage = () => {
+const BasePage: FC = () => {
   // Move
   document.title = 'Page Example - Example'
 
@@ -23,7 +22,7 @@ const BasePage = () => {
   ]
 
   return (
-    <PageContainer>
+    <Container>
       <Breadcrumb pages={breadcrumbPages} />
       <PageHeader />
       <Row>
@@ -34,31 +33,8 @@ const BasePage = () => {
           </div>
         </Col>
       </Row>
-    </PageContainer>
+    </Container>
   )
 }
 
 export default BasePage
-
-/*
-import { FC } from 'react'
-import { Outlet } from 'react-router-dom'
-
-import Header from './Header.dashboard'
-import SideMenu from './SideMenu.dashboard'
-
-const DashboardPage: FC<any> = ({ navigate }) => {
-  console.log(`___incoming navigate in dashboardPage : `)
-  return (
-    <>
-      <Header />
-      {/* <SideMenu /> <<>>/}
-      <div className="content">
-        <Outlet />
-      </div>
-    </>
-  )
-}
-
-export default DashboardPage
-*/

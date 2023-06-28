@@ -4,14 +4,11 @@ import { Navbar, Nav, NavItem } from 'reactstrap'
 
 const Header: React.FC<any> = ({ navigate }) => {
 
-  const routes = ['index', 'main', 'slave', 'random']
+  const routes = ['index', 'slave']
 
   return <>
     <header>
         <Navbar>
-          {/* <NavbarBrand>
-            <img src="" alt=".Logo." className="logo" />
-          </NavbarBrand> */}
           <Nav>
             <NavItem className="fixme">
               <Link to={"/"}>Index</Link>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import Header from './Header'
+import Header from './Header.component'
 import SideBar from './common/SideBar.common'
 
-const Page: React.FC = () => {
+const PageTemplate: React.FC = () => {
   return (<>
     <Header />
     <SideBar layoutType="vertical" />
@@ -11,4 +11,4 @@ const Page: React.FC = () => {
   </>)
 }
 
-export default Page
+export default PageTemplate

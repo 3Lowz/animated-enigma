@@ -12,7 +12,7 @@ const baseRoutes: Array<RouteObject> = [
     children: [
       {
         path: '',
-        element: <PageOne />,
+        element: <></>,
       },
       {
         path: '1',

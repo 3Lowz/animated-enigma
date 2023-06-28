@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 import { Button, Navbar, Nav, NavItem } from 'reactstrap'
 
 const Header: React.FC = () => {
+  
   // TODO: Define all the
   const routes = ['subroute', 'dashboard', 'base']
+
+
   return (
     <>
       <header>
         <Navbar>
-          {/* <NavbarBrand>
-            <img src="" alt=".Logo." className="logo" />
-          </NavbarBrand> */}
           <Nav>
             <NavItem className="fixme">
               <Link to={'/'}>Index</Link>

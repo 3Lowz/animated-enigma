@@ -1,19 +1,18 @@
 import React from 'react'
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
+import { Container } from 'reactstrap'
 
-import Header from './Header.dashboard'
-import SideMenu from './SideMenu.dashboard'
+import Header from './Header.component'
 
 const DashboardPage: FC<any> = ({ navigate }) => {
   console.log(`___incoming navigate in dashboardPage : `)
-  return (<>
-    <Header />
-    {/* <SideMenu /> */}
-    <div className="content">
+  return (
+    <Container>
+      <Header />
       <Outlet />
-    </div>
-  </>)
+    </Container>
+  )
 }
 
 export default DashboardPage

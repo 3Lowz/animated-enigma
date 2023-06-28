@@ -76,9 +76,9 @@ module.exports = {
       exposes: {
         // './App': './src/services/gui/app/App',
         // './bootstrap': './src/services/gui/app/bootstrap',
-        './Page': './src/services/gui/app/components/dashboard/Page.dashboard',
-        './Subroute': './src/services/gui/app/components/Subroute',
-        './Routes': './src/services/gui/app/components/dashboard/index'
+        './Page': './app/components/page-base/Page.base',
+        './Subroute': './app/components/Subroute.page.component',
+        './Routes': './app/components/page-base/index'
       },
       shared: {
         // ...federation,

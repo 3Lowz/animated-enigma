@@ -92,8 +92,8 @@ const clientConfig = {
       // library: { type: "var", name: "skeleton" }
       filename: 'remoteEntry.js',
       exposes: {
-        './Page': './app/components/dashboard/Page.dashboard',
-        './Subroute': './app/components/Subroute',
+        './Page': './app/components/dashboard/Page.dashboard.component',
+        './Subroute': './app/components/Subroute.page.component',
         './Routes': './app/components/dashboard/index'
       },
       shared: {

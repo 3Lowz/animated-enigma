@@ -1,5 +1,7 @@
 # Fastify Plugin React Template
 
+ - [TODOs](#TODO)
+
 ## Description
 Plugin template for plugin development with react app or component exposed using webpack federation
 
@@ -11,7 +13,6 @@ Plugin template for plugin development with react app or component exposed using
  
     > git remote remove origin && git remote add origin <new-git-remote-url>
 
-    or (in 1 command)
 
     > git remote set-url origin <new-git-remote-url>
 
@@ -62,14 +63,15 @@ We need to have a development HOC layer in order to separate the plugin developm
 ```
 
 
-### TODO:
+# TODO
 
  - [ ] : add css (node-sass) loader && uncomment `bootstrap.css` in `app/index.tsx`
- - [x] : review and fix dependencies + npm commands
- - [x] : Implement basic skeleton base app
+ - [-] : review and fix dependencies + npm commands
+ - [-] : Implement basic skeleton base app
  - [ ] : write proper webpack configs for development / production
- - [ ] : configure separated `tsconfig.json` for plugin and app 
+ - [ ] : configure separated `tsconfig.json` for plugin and app
  - [ ] : considering using a separated `package.json` and `tsconfig.json` for app
  - [ ] : fix webpack when returning array of configs
+ - [ ] : add mock data for CustomizableTable showcase
 
 ## Roadmap

@@ -9,9 +9,6 @@ const PageHeader: React.FC<any> = ({ navigate }) => {
     <>
       <header>
         <Navbar>
-          {/* <NavbarBrand>
-            <img src="" alt=".Logo." className="logo" />
-          </NavbarBrand> */}
           <Nav>
             {routes.map((path, i) => (
               <NavItem className="fixme" key={i}>
