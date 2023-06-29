@@ -1,3 +1,3 @@
-import Routes from './Page.routes'
+import Routes from './page.routes'
 
 export default Routes

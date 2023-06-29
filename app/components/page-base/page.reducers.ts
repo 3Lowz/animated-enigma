@@ -15,6 +15,10 @@ const pageBaseReducer = (state = initialState, action: IPageBaseActionTypes) => 
       return { ...state, counter: state.counter + 1 }
     case PageBaseActionTypes.COUNTER_DECREMENT:
       return { ...state, counter: state.counter - 1 }
+    case PageBaseActionTypes.FETCH_SEND:
+      return { ...state, isLoading: true }
+    case PageBaseActionTypes.FETCH_SUCCESS:
+      return { ...state, isLoading: false }
     default:
       state = { ...state }
       break

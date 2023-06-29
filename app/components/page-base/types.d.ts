@@ -4,6 +4,8 @@
 export enum PageBaseActionTypes {
   COUNTER_INCREMENT = "COUNTER_INCREMENT",
   COUNTER_DECREMENT = "COUNTER_DECREMENT",
+  FETCH_SEND = "FETCH_SEND",
+  FETCH_SUCCESS = "FETCH_SUCCESS",
 }
 
 /**
@@ -75,5 +77,9 @@ export type ActionIncrementCounter = {
 export type ActionDecrementCounter = {
   type: PageBaseActionTypes.COUNTER_DECREMENT
 }
+export type ActionFetchResource = { // TODO: Discuss naming convention here
+  type: PageBaseActionTypes.FETCH_SEND|PageBaseActionTypes.FETCH_SUCCESS
+  payload?: any
+}
 
-export type IPageBaseActionTypes = ActionIncrementCounter | ActionDecrementCounter
+export type IPageBaseActionTypes = ActionIncrementCounter|ActionDecrementCounter|ActionFetchResource

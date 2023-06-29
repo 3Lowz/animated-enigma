@@ -14,6 +14,13 @@ interface sidebarInterface {
   location?: any
 }
 
+/**
+ * NB:
+ * 
+ * This component represents the side vertical menu in the main dashboard.
+ * It is here just for showcase purpose
+ * 
+ */
 const SidebarContent = (props: sidebarInterface) => {
   const menuData = menuEntries()
   const loc = useLocation()

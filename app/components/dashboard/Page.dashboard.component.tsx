@@ -6,7 +6,6 @@ import { Container } from 'reactstrap'
 import Header from './Header.component'
 
 const DashboardPage: FC<any> = ({ navigate }) => {
-  console.log(`___incoming navigate in dashboardPage : `)
   return (
     <Container>
       <Header />

@@ -5,21 +5,16 @@ import { incrementCounter, decrementCounter } from './page.actions'
 
 const PageOne: FC = () => {
 
-  const x = useSelector((state) => {
+  const state = useSelector((state) => {
     // @ts-ignore
     return state.PageBase
   })
-  const count = x.counter
-  console.log(x);
-
-
-  // TODO: Implmement currying
+  const count = state.counter
   const dispatch = useDispatch()
-
+  // TODO: Implmement currying
   const add = () => {
     dispatch(incrementCounter())
   }
-
   const sub = () => {
     dispatch(decrementCounter())
   }
