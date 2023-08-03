@@ -1,30 +1,39 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "allowJs": true,
-    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "declaration": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "rootDir": ".",
+    "forceConsistentCasingInFileNames": true,
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "outDir": "./dist",
+    "skipLibCheck": true,
     "sourceMap": true,
-    "outDir": "dist/",
-    "baseUrl": ".",
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "target": "es2022",
     "paths": {
-      "*": ["node_modules/*"],
-      "@types": ["index.d.ts"]
-      // "Skeleton_Remote": ["/"],
-
-    },
-    "noImplicitAny": false,
-  }
+      "@root/*": ["./src/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@types": ["./index.d.ts"],
+    }
+  },
+  "include": [
+    "src/**/*",
+    "index.d.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
 }
