@@ -1,7 +1,7 @@
 {
-  "name": "@adm-3/fastify-module-react-template",
+  "name": "@3Lowz/fastify-module-react-template",
   "version": "0.1.0",
-  "description": "Template for module(fastify plugin) with independent UI development exported through webpack module-federation",
+  "description": "Template for fastify plugin with micro-FE UI development environment exposed through webpack module-federation",
   "main": "dist/index.js",
   "module": "./dist/module.js",
   "types": "./dist/index.d.ts",
@@ -27,8 +27,6 @@
   "author": "Henryk Daneluz",
   "license": "ISC",
   "dependencies": {
-    "@mikro-orm/core": "^5.7.14",
-    "@mikro-orm/mysql": "^5.7.14",
     "fastify-plugin": "^4.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,6 +38,10 @@
     "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
     "simplebar-react": "^3.2.4"
+  },
+  "peerDependencies": {
+    "@mikro-orm/core": "^6.3.1",
+    "@mikro-orm/mysql": "^6.3.1"
   },
   "federation": {
     "react": "18.2.0",
@@ -53,9 +55,9 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@fastify/swagger": "^8.8.0",
-    "@mikro-orm/cli": "^5.7.14",
-    "@mikro-orm/migrations": "^5.7.14",
-    "@mikro-orm/seeder": "^5.7.14",
+    "@mikro-orm/cli": "^6.3.1",
+    "@mikro-orm/migrations": "^6.3.1",
+    "@mikro-orm/seeder": "^6.3.1",
     "@types/jest": "^29.5.3",
     "@types/node": "^18.8.4",
     "@types/react": "^18.0.23",
@@ -64,11 +66,11 @@
     "@types/reactstrap": "^8.7.2",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
-    "fastify": "^4.8.1",
+    "fastify": "^4.17.0",
     "fastify-tsconfig": "^1.0.1",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.6.2",
-    "jsdocs": "^1.0.0",
+    "jsdocs": "^0.0.1",
     "ts-jest": "^29.1.1",
     "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
@@ -83,8 +85,7 @@
   "mikro-orm": {
     "useTsNode": true,
     "configPaths": [
-      "./src/mikro-orm.config.ts",
-      "./dist/mikro-orm.config.js"
+      "./test/mock/mikro-orm.config.ts"
     ]
   }
 }

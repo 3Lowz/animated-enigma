@@ -1,14 +1,14 @@
 /**
- * Class service
+ * Example GUI service
  */
-class GUIService {
-    static index () {
-        return { message: 'Base service' }
-    }
+class GuiService {
+  index() {
+    return { message: 'Base service' }
+  }
 
-    static details () {
-        return { message: 'Get fastify details' }
-    }
+  details() {
+    return { message: 'Get fastify details' }
+  }
 }
 
-export default GUIService
+export default GuiService

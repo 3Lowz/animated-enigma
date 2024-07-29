@@ -1,16 +1,26 @@
-import { FastifyInstance, FastifyPluginOptions } from "fastify"
-import fp from "fastify-plugin"
+import { FastifyInstance, FastifyPluginCallback, FastifyPluginOptions } from 'fastify'
+import { FastifyPluginAsync } from 'fastify'
+import fp from 'fastify-plugin'
 import registerRoutes from './routes'
 
-async function moduleName(fastify: FastifyInstance, opts: FastifyPluginOptions, done: any): Promise<any> {
-    // Registering routes
-    registerRoutes(fastify, opts)
+const templatePlugin: FastifyPluginCallback = async (
+  fastify: FastifyInstance,
+  opts: FastifyPluginOptions,
+  done: Function
+): Promise<void> => {
+  /**
+   * Custom initialization business logic
+   * goes here
+   */
 
-    done()
+  // Registering routes
+  registerRoutes(fastify, opts)
+  done()
 }
 
-export default fp(moduleName, {
-    fastify: '4.x',
-    name: '@alea-module/react-template',
-    dependencies: ['@fastify/static']
-})
+export default fp(templatePlugin, {
+  fastify: '4.x',
+  name: '@3Lowz/react-template',
+  // dependencies: ['@fastify/static'],
+  encapsulate: false,
+}) as FastifyPluginAsync

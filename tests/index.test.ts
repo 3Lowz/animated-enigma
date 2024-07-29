@@ -1,22 +1,31 @@
 import { MikroORM } from '@mikro-orm/mysql'
-import { setup } from './setup'
-import { teardown } from './teardown'
+import { FastifyInstance } from 'fastify'
 
 // Increasing the jest timeout for long ajax calls
-jest.setTimeout(2500)
+jest.setTimeout(25000)
 
-let db: MikroORM
+// let db: MikroORM
+let server: FastifyInstance
 
 beforeAll(async () => {
-  db = await setup()
-})
-afterAll(() => {
-  teardown(db)
+  server = (globalThis as any).app
+  await server.listen()
+  await server.ready()
 })
 
-describe('Index Library Test:', () => {
-  test(`Expect to connect to the db`, async () => {
-    expect(db).toBeDefined()
-    expect(db.em).toBeDefined()
+describe('Server is running:', () => {
+  test(`Expect recieve response on default plugin url`, async () => {
+    server.inject(
+      {
+        method: 'get',
+        url: '/template/plugin',
+      },
+      (err, res) => {
+        expect(err).toBeNull()
+        // @ts-ignore
+        const content = JSON.parse(res.body)
+        expect(content).toEqual({ message: 'hello from @3lowz/skeleton-react' })
+      }
+    )
   })
 })

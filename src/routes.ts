@@ -1,50 +1,52 @@
-import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import { FastifyInstance, FastifyRequest, FastifyReply, FastifyPluginOptions, RouteOptions } from 'fastify'
 import emptyHook from './hooks/empty.hook'
-import gui from './services/gui/index'
-import base from './services/base/index'
+import { registerGuiRoutes } from './services/gui'
+import { registerAuthRoutes } from './services/auth'
+// import base from './services/base/index'
 
+/**
+ * Global plugin routes
+ */
 const moduleRoutes = [
   {
     method: 'GET',
     url: '/plugin',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
-      const result = { message: 'hello from @alea-module/skeleton-react' }
+      const result = { message: 'hello from @3lowz/skeleton-react' }
       reply.send(result)
-    }
+    },
   },
-  {
-    method: 'GET',
-    url: '/plugin-version',
-    schema: {},
-    handler: (req: FastifyRequest, reply: FastifyReply) => {
-      const result = { version: '1.0.0' }
-      reply.send(result)
-    }
-  }  
-]
+] as RouteOptions[]
 
 /**
  * Registers all the plugin routes
  * @param fastify Fastify main instance
  * @returns Fastify instance
  */
-export default function registerRoutes(fastify: FastifyInstance, opts: any) {
-    const routes = Array().concat(
-      moduleRoutes,
-      gui,
-      base,
-      // Add you routes here...
-    )
-    // TODO: allow method definition
-    const hookedRoutes = routes.map(route => { return { ...route, onRequest: emptyHook } })
+export default function registerRoutes(fastify: FastifyInstance, opts: FastifyPluginOptions) {
+  let routes = [
+    ...moduleRoutes,
+    // Add you routes here...
+  ]
 
-    const { prefix } = opts || ''
-    routes.map((route) => {
-     fastify.register(async (app, _, done) => {
-      app.route(route)
+  registerAuthRoutes(fastify, opts)
+  registerGuiRoutes(fastify, opts)
+
+  // TODO: allow method definition
+  const hookedRoutes = routes.map((route) => {
+    return { ...route, onRequest: emptyHook }
+  })
+
+  const { prefix } = opts || ''
+  fastify.register(
+    (app, _, done) => {
+      routes.map((route) => {
+        app.route(route)
+      })
       done()
-     }, { prefix })
-    })
-    return fastify
-  }
+    },
+    { prefix }
+  )
+  return fastify
+}

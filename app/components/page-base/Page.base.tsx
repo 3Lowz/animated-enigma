@@ -1,4 +1,4 @@
-import { Container, Col, Row } from 'reactstrap'
+  import { Container, Col, Row } from 'reactstrap'
 // import PageContainer from '../../Components/Common/PageContainer'
 import { Outlet } from 'react-router'
 import React, { FC } from 'react'
