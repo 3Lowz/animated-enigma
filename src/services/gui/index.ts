@@ -1,2 +1,2 @@
-export { FastifyGuiRequest } from './gui.decorators'
+export { guiRequestDecorator } from './gui.decorators'
 export { registerGuiRoutes } from './gui.routes'

@@ -73,5 +73,6 @@ We need to have a development HOC layer in order to separate the plugin developm
  - [ ] : considering using a separated `package.json` and `tsconfig.json` for app
  - [ ] : fix webpack when returning array of configs
  - [ ] : add mock data for CustomizableTable showcase
+ - [ ] : integrate react-story-book
 
 ## Roadmap
