@@ -1,7 +1,7 @@
-import User from './user.entity'
+import Todo from './todo.entity'
 
-const entities = [User]
+const entities = [Todo]
 
 export default entities
 
-export * from './user.entity'
+export * from './todo.entity'

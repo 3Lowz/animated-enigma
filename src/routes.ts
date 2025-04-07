@@ -1,8 +1,6 @@
 import { FastifyInstance, FastifyRequest, FastifyReply, FastifyPluginOptions, RouteOptions } from 'fastify'
+import { registerTodoRoutes } from 'services/todo'
 import emptyHook from './hooks/empty.hook'
-import { registerGuiRoutes } from './services/gui'
-import { registerAuthRoutes } from './services/auth'
-// import base from './services/base/index'
 
 /**
  * Global plugin routes
@@ -13,7 +11,7 @@ const moduleRoutes = [
     url: '/plugin',
     schema: {},
     handler: (req: FastifyRequest, reply: FastifyReply) => {
-      const result = { message: 'hello from @3lowz/skeleton-react' }
+      const result = { message: 'hello from @3lowz/animated-enigma' }
       reply.send(result)
     },
   },
@@ -30,13 +28,12 @@ export default function registerRoutes(fastify: FastifyInstance, opts: FastifyPl
     // Add you routes here...
   ]
 
-  registerAuthRoutes(fastify, opts)
-  registerGuiRoutes(fastify, opts)
-
   // TODO: allow method definition
   const hookedRoutes = routes.map((route) => {
     return { ...route, onRequest: emptyHook }
   })
+
+  registerTodoRoutes(fastify, { ...opts, db: opts.db })
 
   const { prefix } = opts || ''
   fastify.register(

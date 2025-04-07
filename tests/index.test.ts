@@ -24,7 +24,7 @@ describe('Server is running:', () => {
         expect(err).toBeNull()
         // @ts-ignore
         const content = JSON.parse(res.body)
-        expect(content).toEqual({ message: 'hello from @3lowz/skeleton-react' })
+        expect(content).toEqual({ message: 'hello from @3lowz/animated-enigma' })
       }
     )
   })

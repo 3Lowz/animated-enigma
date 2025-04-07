@@ -1,13 +1,12 @@
-/* eslint-disable no-extra-boolean-cast */
 import path from 'path'
 import dotenv, { DotenvParseOutput } from 'dotenv'
-import { Options, MySqlDriver } from '@mikro-orm/mysql'
-import entities from '../../src/entities/index'
+import { MySqlDriver, Options } from '@mikro-orm/mysql'
+import entities from './entities'
 
 const DEBUG = true
 
 const readFileEnv = (filepath?: string): DotenvParseOutput => {
-  const envPath = filepath || './../../'
+  const envPath = filepath || './../'
   const envFilename = '.env'
   const nodeEnv = process.env.NODE_ENV ?? 'test'
   const envFile = path.join(__dirname, envPath, `${envFilename}.${nodeEnv}`)
@@ -31,8 +30,6 @@ const config: Options = {
   user: env.MYSQL_USER,
   password: env.MYSQL_PASS,
   entities: entities,
-  // persistOnCreate: true,
-  // allowGlobalContext: true, // see: https://stackoverflow.com/questions/71117269/validation-error-using-global-entity-manager-instance-methods-for-context-speci
   // migrations: {
   //   path: 'dist/migrations',
   //   pathTs: 'src/migrations',
@@ -40,13 +37,7 @@ const config: Options = {
   schemaGenerator: {
     disableForeignKeys: false,
   },
-  // seeder: {
-  //   path: './src/seeders', // path to the folder with seeders
-  //   // pathTs: undefined, // path to the folder with TS seeders (if used, we should put path to compiled files in `path`)
-  //   glob: '!(*.d).{js,ts}', // how to match seeder files (all .js and .ts files, but not .d.ts)
-  //   emit: 'ts', // seeder generation mode
-  //   fileName: (className: string) => className, // seeder file naming convention
-  // },
+  debug: DEBUG,
 }
 
 export default config

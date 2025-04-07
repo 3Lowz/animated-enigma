@@ -1,8 +1,10 @@
-// import { MikroORM, MySqlDriver } from '@mikro-orm/mysql'
-// import dbConfig from './mikro-orm.config'
-import { FastifyInstance, FastifyServerOptions } from 'fastify'
+import { MikroORM, MySqlDriver } from '@mikro-orm/mysql'
 import fastify from 'fastify'
+import { FastifyInstance, FastifyServerOptions } from 'fastify'
+import fastifyPrintRoutes from 'fastify-print-routes'
+
 import fastifySwagger from '@fastify/swagger'
+import dbConfig from './mikro-orm.config'
 
 // import { FastifyInstance, ErrorResponse } from '../index'
 
@@ -26,28 +28,43 @@ import fastifySwagger from '@fastify/swagger'
 import templatePlugin from './../../src'
 
 // Configuring the Fastify Instance
-function createServer(config: object): FastifyInstance {
+async function createServer(config: object): Promise<FastifyInstance> {
   const opts: FastifyServerOptions = { ...config } // Define type
 
   // Initializing
   const server = fastify(opts)
+  server.register(fastifyPrintRoutes)
 
   // @ts-ignore
-  // server.register(fastifySwagger, {
-  //   exposeRoute: true,
-  //   routePrefix: '/swagger',
-  //   swagger: {
-  //     info: {
-  //       title: 'Basic swagger',
-  //       description: 'Documentation for available API',
-  //       version: '1.0.0',
-  //     },
-  //   },
-  // })
+  server.register(fastifySwagger, {
+    exposeRoute: true,
+    routePrefix: '/swagger',
+    swagger: {
+      info: {
+        title: 'Basic swagger',
+        description: 'Documentation for available API',
+        version: '1.0.0',
+      },
+    },
+    servers: [
+      {
+        url: 'http://localhost:5000',
+        description: 'Development server',
+      },
+    ],
+  })
 
+  const db = await MikroORM.init<MySqlDriver>(dbConfig) //.then((conn: MikroORM) => {
+
+  // @ts-ignore
   server.register(templatePlugin, {
     prefix: 'template',
+    db,
   })
+  // })
+
+  await server.ready()
+  server.swagger()
 
   return server
 }

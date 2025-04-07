@@ -15,17 +15,17 @@ export default class LibraryEnvironment extends TestEnvironment {
   async setup() {
     await super.setup()
 
-    const server = createServer({ logger: false })
+    const server = await createServer({ logger: false })
     this.app = server
-    // this.db = await MikroORM.init<MySqlDriver>(dbConfig)
+    this.db = await MikroORM.init<MySqlDriver>(dbConfig)
     this.global.app = this.app as FastifyInstance
-    // this.global.db = this.db as MikroORM
+    this.global.db = this.db as MikroORM
 
     return
   }
 
   async teardown() {
-    // this.db.close()
+    this.db.close()
     this.app.close()
     await super.teardown()
   }
