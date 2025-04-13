@@ -11,7 +11,8 @@ declare module 'fastify' {
   }
 }
 
-declare module '@adm-3/ath-module' {
+//@company/module
+declare module 'animated-enigma' {
     
 }
 

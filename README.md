@@ -5,6 +5,10 @@
 ## Description
 Plugin template for plugin development with react app or component exposed using webpack federation
 
+# Dev test
+> npx ts-node-dev --respawn --transpile-only -r tsconfig-paths/register tests/mock/index.ts
+
+
 ## Installation
  1. clone this repo
     > git clone git@gitlab.local.alea.pro:adm-3/templates/fastify-plugin-react-template.git
@@ -64,6 +68,8 @@ We need to have a development HOC layer in order to separate the plugin developm
 
 
 # TODO
+
+ - [ ] : implement anonymous user hook
 
  - [ ] : add css (node-sass) loader && uncomment `bootstrap.css` in `app/index.tsx`
  - [-] : review and fix dependencies + npm commands

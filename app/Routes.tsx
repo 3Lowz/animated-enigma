@@ -39,7 +39,9 @@ function addBrowserRoutes(routes: Array<RouteObject>): void {
 // TODO: function addBrowserChildrenRoutes()
 
 // Work around for @remix/react-router V6, see: https://github.com/remix-run/react-router/issues/7421
+// @ts-ignore
 const mapRoutes = (routes) => {
+  // @ts-ignore
   return routes.map(({ path, element, children }, key) => (
     <Route path={path} key={key} element={element} children={children && mapRoutes(children)} />
   ))
