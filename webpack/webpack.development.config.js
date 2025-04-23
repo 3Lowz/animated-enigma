@@ -1,20 +1,20 @@
 // remote/webpack.config.js
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
-const { federation } = require("./../package.json");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { ModuleFederationPlugin } = require('webpack').container
+const path = require('path')
+const { federation } = require('./../package.json')
 
 const serverConfig = {
-  target: "node",
-  mode: "development",
-  devtool: "inline-source-map",
+  target: 'node',
+  mode: 'development',
+  devtool: 'inline-source-map',
   entry: {
     server: './src/index.ts',
   },
   output: {
-    path: path.join(__dirname, "../dist"),
-    filename: "[name].js", // [app]
-    sourceMapFilename: "[name].map",
+    path: path.join(__dirname, '../dist'),
+    filename: '[name].js', // [app]
+    sourceMapFilename: '[name].map',
     // clean: true,
   },
   module: {
@@ -24,40 +24,38 @@ const serverConfig = {
         exclude: /node_modules|app/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: [
-                "@babel/typescript",
-              ],
+              presets: ['@babel/typescript'],
             },
           },
         ],
-      }
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: ['.ts', '.js'],
   },
-};
+}
 
 const clientConfig = {
-  target: "web",
-  mode: "development",
+  target: 'web',
+  mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    app: './app/index.tsx'
+    app: './app/index.tsx',
   },
   output: {
-    path: path.join(__dirname, "../dist/app"),
-    filename: "[name].js",
-    sourceMapFilename: "[name].map",
+    path: path.join(__dirname, '../dist/app'),
+    filename: '[name].js',
+    sourceMapFilename: '[name].map',
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "../dist/app"),
+      directory: path.join(__dirname, '../dist/app'),
     },
     port: 4004,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -66,25 +64,21 @@ const clientConfig = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: [
-                "@babel/preset-env",
-                "@babel/preset-react",
-                "@babel/typescript",
-              ],
+              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/typescript'],
             },
           },
         ],
       },
       {
         test: /\.css$/i,
-        use: ['css-loader']
+        use: ['css-loader'],
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -92,20 +86,21 @@ const clientConfig = {
       // library: { type: "var", name: "skeleton" }
       filename: 'remoteEntry.js',
       exposes: {
-        './Page': './app/components/dashboard/Page.dashboard.component',
-        './Subroute': './app/components/Subroute.page.component',
-        './Routes': './app/components/dashboard/index'
+        // './Page': './app/components/dashboard/Page.dashboard.component',
+        // './Subroute': './app/components/Subroute.page.component',
+        './Todo': './app/pages/Todo.page.component',
+        './Routes': './app/components/dashboard/index',
       },
       shared: {
         react: {
           singleton: true,
           requiredVersion: federation.react,
         },
-        "react-dom": {
+        'react-dom': {
           singleton: true,
           requiredVersion: federation['react-dom'],
         },
-        "react-router-dom": {
+        'react-router-dom': {
           singleton: true,
           requiredVersion: federation['react-router-dom'],
         },
@@ -117,11 +112,11 @@ const clientConfig = {
       },
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    })
+      template: './public/index.html',
+    }),
   ],
-};
+}
 
-module.exports = serverConfig;
-module.exports = clientConfig;
+module.exports = serverConfig
+module.exports = clientConfig
 // module.exports = [serverConfig, clientConfig];

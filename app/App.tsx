@@ -8,7 +8,7 @@ import { Container } from 'reactstrap'
 import AppRoutes from './Routes'
 
 import './App.css'
-import { Outlet } from 'react-router'
+// import { Outlet } from 'react-router'
 
 const App = () => {
   const routes = createBrowserRouter(AppRoutes, {

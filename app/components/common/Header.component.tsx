@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router'
 import { Button, Navbar, Nav, NavItem } from 'reactstrap'
 
 const Header: React.FC = () => {
-  
   // TODO: Define all the
-  const routes = ['subroute', 'dashboard', 'base']
-
+  const routes = ['subroute', 'todo']
 
   return (
     <>
@@ -14,11 +12,11 @@ const Header: React.FC = () => {
         <Navbar>
           <Nav>
             <NavItem className="fixme">
-              <Link to={'/'}>Index</Link>
+              <NavLink to={'/'}>Index</NavLink>
             </NavItem>
             {routes.map((path, i) => (
               <NavItem className="fixme" key={i}>
-                <Link to={'/' + path}>{path}</Link>
+                <NavLink to={'/' + path}>{path}</NavLink>
               </NavItem>
             ))}
           </Nav>

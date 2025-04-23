@@ -2,10 +2,10 @@
  * Actions
  */
 export enum PageBaseActionTypes {
-  COUNTER_INCREMENT = "COUNTER_INCREMENT",
-  COUNTER_DECREMENT = "COUNTER_DECREMENT",
-  FETCH_SEND = "FETCH_SEND",
-  FETCH_SUCCESS = "FETCH_SUCCESS",
+  COUNTER_INCREMENT = 'COUNTER_INCREMENT',
+  COUNTER_DECREMENT = 'COUNTER_DECREMENT',
+  FETCH_SEND = 'FETCH_SEND',
+  FETCH_SUCCESS = 'FETCH_SUCCESS',
 }
 
 /**
@@ -27,7 +27,8 @@ export interface IAjaxResponse {
   meta: IMetaList
 }
 
-export interface IEntity { // Example entity
+export interface IEntity {
+  // Example entity
   email: string
   id: string
   mobile?: string
@@ -35,7 +36,7 @@ export interface IEntity { // Example entity
 }
 
 /**
- * Page Component Props 
+ * Page Component Props
  */
 export interface IPageBaseState {
   isLoading: boolean
@@ -49,21 +50,20 @@ export interface IPageBaseState {
  * Generics
  */
 export enum OrderEnum {
-  DESC= 'desc',
-  ASC= 'asc',
+  DESC = 'desc',
+  ASC = 'asc',
 }
 export type BaseColumnType = 'id'
 
-export type PageSizeOptsType = 10 | 20 | 50 | 100 
-export type PageSizeOptsLabelType = '10' | '20' | '50' | '100' 
+export type PageSizeOptsType = 10 | 20 | 50 | 100
+export type PageSizeOptsLabelType = '10' | '20' | '50' | '100'
 
 export interface PagesizeOptsInt {
-    value: PageSizeOptsType
-    label: PageSizeOptsLabelType
+  value: PageSizeOptsType
+  label: PageSizeOptsLabelType
 }
 
-
-export interface IConfig<ColumnType=BaseColumnType> {
+export interface IConfig<ColumnType = BaseColumnType> {
   limit: PageSizeOptsType
   offset: number
   column: ColumnType
@@ -77,9 +77,10 @@ export type ActionIncrementCounter = {
 export type ActionDecrementCounter = {
   type: PageBaseActionTypes.COUNTER_DECREMENT
 }
-export type ActionFetchResource = { // TODO: Discuss naming convention here
-  type: PageBaseActionTypes.FETCH_SEND|PageBaseActionTypes.FETCH_SUCCESS
+export type ActionFetchResource = {
+  // TODO: Discuss naming convention here
+  type: PageBaseActionTypes.FETCH_SEND | PageBaseActionTypes.FETCH_SUCCESS
   payload?: any
 }
 
-export type IPageBaseActionTypes = ActionIncrementCounter|ActionDecrementCounter|ActionFetchResource
+export type IPageBaseActionTypes = ActionIncrementCounter | ActionDecrementCounter | ActionFetchResource
