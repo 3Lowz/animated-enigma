@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Container } from 'reactstrap'
 
 import AppRoutes from './Routes'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 // import { Outlet } from 'react-router'
 

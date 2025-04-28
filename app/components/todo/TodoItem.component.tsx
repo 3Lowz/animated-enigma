@@ -1,4 +1,6 @@
 import React from 'react'
+import { InputGroup, InputGroupText, Input, ListGroupItem } from 'reactstrap'
+
 import { ITodo } from './todo'
 
 export interface ITodoItem {
@@ -7,12 +9,14 @@ export interface ITodoItem {
 
 const TodoItem: React.FC<ITodoItem> = ({ todo }) => {
   return (
-    <>
-      <div>
-        {todo.blob}
-        <input type="checkbox" name="isDone" id="done" checked={todo.isDone} />
-      </div>
-    </>
+    <ListGroupItem>
+      <InputGroup>
+        <InputGroupText>
+          <Input addon type="checkbox" id="done" checked={todo.isDone} onChange={() => {}} />
+        </InputGroupText>
+        <Input value={todo.blob} disabled />
+      </InputGroup>
+    </ListGroupItem>
   )
 }
 

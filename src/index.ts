@@ -5,7 +5,7 @@ import fp from 'fastify-plugin'
 
 import dbConfig from './mikro-orm.config'
 import registerRoutes from './routes'
-import { registerTodoRoutes } from './services/todo'
+import { registerTodoRoutes } from './services/todo/index'
 
 export interface FastifyPluginEnigmaOptions extends FastifyPluginOptions {
   db: MikroORM

@@ -15,6 +15,7 @@ export interface FastifyTodoRequest extends FastifyRequest {
     blob: string
     isDone: boolean
   }
+  service: TodoService
 }
 
 export const todoRoutes = [
@@ -23,17 +24,20 @@ export const todoRoutes = [
     url: '/',
     schema: {},
     handler: async (req: FastifyTodoRequest, reply: FRep) => {
-      const todos = await req.service.getList()
+      // @ts-ignore
+      const todos = await req.service().getList()
       reply.send(todos)
     },
   },
   {
-    method: 'POST',
+    method: ['POST'],
     url: '/',
     schema: TodoCreateSchema,
     handler: async (req: FastifyTodoRequest, reply: FRep) => {
-      const todo = await req.service.create({ ...req.body })
-      reply.send({ ...todo })
+      const body = req.body
+      // @ts-ignore
+      const todo = await req.service().create({ ...body })
+      reply.send({ ...todo, id: parseInt(todo.id) })
     },
   },
   {
@@ -41,7 +45,8 @@ export const todoRoutes = [
     url: '/:id',
     schema: TodoCreateSchema,
     handler: async (req: FastifyTodoRequest, reply: FRep) => {
-      const todo = await req.service.update(req.body.id, { ...req.body })
+      // @ts-ignore
+      const todo = await req.service().update(req.body.id, { ...req.body })
       reply.send({ ...todo })
     },
   },
@@ -51,7 +56,9 @@ export const todoRoutes = [
     url: '/:id',
     schema: TodoCreateSchema,
     handler: async (req: FastifyTodoRequest, reply: FRep) => {
-      const todo = await req.service.delete({ id: req.id })
+      // @ts-ignore
+      const todo = await req.service().delete({ id: req.id })
+      // @ts-ignore
       reply.send({ ...todo })
     },
   },
@@ -71,7 +78,8 @@ export async function registerTodoRoutes(fastify: FastifyInstance, opts: Fastify
     (app, _, done) => {
       // Decorating services route - Here we should evaluate proper encapsulation
       app.decorateRequest('service', () => {
-        return new TodoService(db)
+        const service = new TodoService(db)
+        return service
       })
 
       // Registering services routes

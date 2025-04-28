@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyRequest, FastifyReply, FastifyPluginOptions, RouteOptions } from 'fastify'
-import { registerTodoRoutes } from 'services/todo'
+import { registerTodoRoutes } from './services/todo/todo.routes'
 import emptyHook from './hooks/empty.hook'
 
 /**

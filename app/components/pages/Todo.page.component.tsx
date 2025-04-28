@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, Container } from 'reactstrap'
+import { Alert, Container, Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
 import TodoList from '../todo/TodoList.component'
@@ -30,18 +30,20 @@ const TodoPage: React.FC = () => {
 
   return (
     <Container>
-      <Alert>Todo</Alert>
-      <h1>Todo page</h1>
-      <Container>
-        <div>
-          <div>
-            <TodoList todos={todos} />
-          </div>
-          <div>
+      <Row>
+        <Alert>Todo</Alert>
+        <h1>Todo page</h1>
+      </Row>
+      <Row>
+        <Col>
+          <TodoList todos={todos} />
+        </Col>
+        <Col>
+          <Row>
             <TodoForm onAdd={onAdd} todo={todo} />
-          </div>
-        </div>
-      </Container>
+          </Row>
+        </Col>
+      </Row>
     </Container>
   )
 }

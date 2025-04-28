@@ -10,7 +10,7 @@ export class Todo {
 export interface ITodo extends Todo {}
 
 export const todoSchema = new EntitySchema<ITodo>({
-  name: 'Todo',
+  name: 'todo',
   tableName: 't_todo',
   properties: {
     id: { type: 'bigint', primary: true },

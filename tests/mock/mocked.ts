@@ -35,6 +35,25 @@ async function createServer(config: object): Promise<FastifyInstance> {
   const server = fastify(opts)
   server.register(fastifyPrintRoutes)
 
+  server.register(require('@fastify/cors'), (instance) => {
+    // @ts-ignore
+    return (req, callback) => {
+      const corsOptions = {
+        // This is NOT recommended for production as it enables reflection exploits
+        origin: true,
+      }
+
+      // // do not include CORS headers for requests from localhost
+      // if (/^localhost$/m.test(req.headers.origin)) {
+      //   corsOptions.origin = false
+      // }
+
+      // callback expects two parameters: error and options
+      // @ts-ignore
+      callback(null, corsOptions)
+    }
+  })
+
   // @ts-ignore
   server.register(fastifySwagger, {
     exposeRoute: true,

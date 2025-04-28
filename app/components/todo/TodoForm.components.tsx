@@ -1,4 +1,6 @@
 import React, { MouseEventHandler, useState } from 'react'
+import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
+
 import { ITodo } from './todo'
 
 export interface ITodoForm {
@@ -21,7 +23,7 @@ const TodoForm: React.FC<ITodoForm> = ({ onAdd, todo }) => {
 
   const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value, checked } = ev.target
-    if (id === 'done') {
+    if (id === 'isDone') {
       setIsDone(checked)
     } else {
       setBlob(value)
@@ -29,15 +31,22 @@ const TodoForm: React.FC<ITodoForm> = ({ onAdd, todo }) => {
   }
 
   return (
-    <>
-      <form>
-        <input type="text" name="blob" id="blob" onChange={onChange} />
-        <input type="checkbox" name="isDone" id="done" checked={isDone} onChange={onChange} />
-        <button type="button" onClick={onInternalAdd}>
-          submit
-        </button>
-      </form>
-    </>
+    <Form>
+      <Row>Insert new Todo:</Row>
+      <Row>
+        <FormGroup floating>
+          <Label for="blob">Blob</Label>
+          <Input type="text" placeholder={blob} name="blob" id="blob" onChange={onChange} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="isDone">IsDone</Label>
+          <Input type="checkbox" name="isDone" id="isDone" checked={isDone} onChange={onChange} />
+        </FormGroup>
+      </Row>
+      <Button type="button" onClick={onInternalAdd}>
+        Submit
+      </Button>
+    </Form>
   )
 }
 

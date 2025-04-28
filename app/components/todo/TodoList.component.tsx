@@ -1,4 +1,6 @@
 import React from 'react'
+import { ListGroup } from 'reactstrap'
+
 import { ITodo } from './todo'
 import TodoItem from './TodoItem.component'
 
@@ -9,11 +11,11 @@ export interface ITodoList {
 const TodoList: React.FC<ITodoList> = ({ todos }) => {
   return (
     <>
-      <ul>
+      <ListGroup>
         {todos.map((todo, i) => {
           return <TodoItem todo={todo} key={i} />
         })}
-      </ul>
+      </ListGroup>
     </>
   )
 }
