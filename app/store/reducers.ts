@@ -1,10 +1,9 @@
-import { combineReducers } from 'redux'
-import PageBase from './../components/page-base/page.reducers'
+import todoSlice from '../components/todo/todo.slice'
 
-const rootReducer = combineReducers({
-  PageBase
-});
+console.log(`Combining slices...`)
 
-export type RootReducerType = ReturnType<typeof rootReducer>;
+const rootReducers = {
+  todo: todoSlice,
+}
 
-export default rootReducer;
+export default rootReducers

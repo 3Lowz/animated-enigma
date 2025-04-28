@@ -1,7 +1,8 @@
 import React from 'react'
 import { Suspense } from 'react'
 import { Provider } from 'react-redux'
-import { configureStore } from './store'
+// import store from './store'
+import store, { newConfigStore } from './store'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Container } from 'reactstrap'
 
@@ -19,7 +20,7 @@ const App = () => {
   })
 
   return (
-    <Provider store={configureStore({})}>
+    <Provider store={store}>
       <Container>
         <Suspense fallback={<div className="Loading">Loading...</div>}>
           <RouterProvider router={routes} />
